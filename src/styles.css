@@ -1,0 +1,397 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Fontes personalizadas do campeonato */
+@font-face {
+  font-family: "FWC2026 Expanded";
+  src: url("/fonts/FWC2026-ExpandedBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FWC2026 Condensed";
+  src: url("/fonts/FWC2026-UltraCondensedMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FWC2026 Condensed";
+  src: url("/fonts/FWC2026-UltraCondensedBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FIFA 26";
+  src: url("/fonts/Fifa26.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * Sistema visual "Championship 26"
+ * Inspirado na identidade vibrante de grandes eventos mundiais de futebol:
+ * cores primarias saturadas, arcos geometricos altos como fundo
+ * e tipografia de destaque em tamanho grande.
+ * O logo fica em um espaco reservado de proposito; veja <BrandMark />.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --font-condensed: var(--font-heading-condensed);
+  --font-numeric: var(--font-numeric-stack);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-court-green: var(--court-green);
+  --color-court-green-dark: var(--court-green-dark);
+  --color-court-line: var(--court-line);
+  --color-bench: var(--bench);
+  --color-token-home: var(--token-home);
+  --color-token-goalkeeper: var(--token-goalkeeper);
+  --color-token-away: var(--token-away);
+  --color-accent-amber: var(--accent-amber);
+
+  /* Acentos da marca sem logo */
+  --color-brand-red:    var(--brand-red);
+  --color-brand-blue:   var(--brand-blue);
+  --color-brand-green:  var(--brand-green);
+  --color-brand-lime:   var(--brand-lime);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-amber:  var(--brand-amber);
+}
+
+:root {
+  --radius: 1rem;
+
+  --font-heading: "FWC2026 Expanded", "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-heading-condensed: "FWC2026 Condensed", "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-numeric-stack: "FIFA 26", "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  /* Tela em branco quente, como programa de estadio */
+  --background: oklch(0.985 0.005 95);
+  --surface:    oklch(0.97 0.006 95);
+  --surface-2:  oklch(0.93 0.01 95);
+  --foreground: oklch(0.16 0.03 264);
+
+  --card:               oklch(1 0 0);
+  --card-foreground:    var(--foreground);
+  --popover:            oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  /* Paleta da marca baseada no trofeu do campeonato */
+  --brand-red:    oklch(0.58 0.22 27);    /* vermelho do trofeu */
+  --brand-blue:   oklch(0.72 0.14 220);   /* ciano do ceu */
+  --brand-green:  oklch(0.62 0.16 150);   /* verde da quadra */
+  --brand-lime:   oklch(0.85 0.20 125);   /* lima de destaque */
+  --brand-purple: oklch(0.48 0.22 295);   /* roxo intenso */
+  --brand-amber:  oklch(0.72 0.18 55);    /* laranja do trofeu */
+
+  --primary:               var(--brand-red);
+  --primary-foreground:    oklch(0.99 0 0);
+  --secondary:             oklch(0.95 0.008 247);
+  --secondary-foreground:  var(--foreground);
+  --muted:                 oklch(0.95 0.008 247);
+  --muted-foreground:      oklch(0.45 0.02 256);
+  --accent:                oklch(0.94 0.02 263);
+  --accent-foreground:     var(--foreground);
+  --destructive:           oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.16 0.03 264 / 12%);
+  --input:  oklch(0.16 0.03 264 / 16%);
+  --ring:   var(--brand-blue);
+
+  /* Quadra para manter realismo tatico */
+  --court-green:      oklch(0.6  0.14 148);
+  --court-green-dark: oklch(0.5  0.14 148);
+  --court-line:       oklch(0.99 0 0);
+  --bench:            oklch(0.97 0.006 95);
+
+  /* Pecas: mantem casa/fora distintos do vermelho da marca */
+  --token-home:       var(--brand-blue);
+  --token-goalkeeper: var(--brand-amber);
+  --token-away:       oklch(0.22 0.03 264);
+  --accent-amber:     var(--brand-amber);
+
+  --chart-1: var(--brand-red);
+  --chart-2: var(--brand-blue);
+  --chart-3: var(--brand-green);
+  --chart-4: var(--brand-amber);
+  --chart-5: var(--brand-purple);
+
+  --sidebar:                       oklch(1 0 0);
+  --sidebar-foreground:            var(--foreground);
+  --sidebar-primary:               var(--brand-red);
+  --sidebar-primary-foreground:    oklch(0.99 0 0);
+  --sidebar-accent:                oklch(0.95 0.008 247);
+  --sidebar-accent-foreground:     var(--foreground);
+  --sidebar-border:                var(--border);
+  --sidebar-ring:                  var(--brand-blue);
+
+  /* Elevacao com aparencia de transmissao esportiva */
+  --shadow-sm: 0 1px 2px oklch(0.16 0.03 264 / 8%);
+  --shadow-md: 0 8px 24px -10px oklch(0.16 0.03 264 / 22%), 0 2px 6px oklch(0.16 0.03 264 / 8%);
+  --shadow-lg: 0 28px 56px -22px oklch(0.16 0.03 264 / 28%), 0 10px 20px -14px oklch(0.16 0.03 264 / 14%);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 250);
+  --surface:    oklch(0.2  0.02 250);
+  --surface-2:  oklch(0.24 0.02 250);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.2 0.02 250);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.2 0.02 250);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: var(--brand-red);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.26 0.02 250);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.26 0.02 250);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.3 0.03 250);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--brand-blue);
+  --bench: oklch(0.23 0.02 250);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    font-family: var(--font-body);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading-condensed);
+    font-weight: 900;
+    letter-spacing: 0.005em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+
+  /* Reserve a Expanded Black ultra larga para momentos principais da marca */
+  .font-display {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .font-condensed {
+    font-family: var(--font-heading-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .font-numeric {
+    font-family: var(--font-numeric);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ----------------------------------------------------------------
+ * "26" monogram backdrop — the brand mark tiled in championship
+ * colors as a subtle, repeating motif behind the app shell.
+ * ---------------------------------------------------------------- */
+.app-shell-bg {
+  position: relative;
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(120% 60% at 50% 0%, oklch(0.55 0.22 26 / 6%), transparent 60%),
+    radial-gradient(80% 50% at 0% 100%, oklch(0.5 0.22 263 / 7%), transparent 60%),
+    radial-gradient(80% 50% at 100% 100%, oklch(0.62 0.18 305 / 6%), transparent 60%);
+}
+
+.app-shell-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23e63946' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%236938d4' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23c4e93a' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%232eb7d6' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23f08a1c' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%23c4e93a' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>");
+  background-size: 200px 310px, 200px 310px, 200px 310px;
+  background-position: 0 0, 100px 155px, 200px 60px;
+  background-repeat: repeat, repeat, repeat;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,1) 100%);
+  z-index: 0;
+}
+
+.app-shell-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Faixa colorida reutilizavel: cinco barras usadas como acento horizontal
+   em paineis de destaque, cabecalhos de placar e similares. */
+.brand-stripe {
+  display: flex;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.brand-stripe > span { flex: 1; }
+.brand-stripe > span:nth-child(1) { background: var(--brand-red); }
+.brand-stripe > span:nth-child(2) { background: var(--brand-amber); }
+.brand-stripe > span:nth-child(3) { background: var(--brand-lime); }
+.brand-stripe > span:nth-child(4) { background: var(--brand-blue); }
+.brand-stripe > span:nth-child(5) { background: var(--brand-purple); }
+
+/* Painel da marca com formas coloridas curvas */
+.brand-arches-panel {
+  position: relative;
+  background: var(--brand-red);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Forma curva lima no canto superior esquerdo */
+.brand-arches-panel::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 70%;
+  aspect-ratio: 1;
+  top: -22%;
+  left: -22%;
+  background: var(--brand-lime);
+  border-radius: 50%;
+}
+/* Forma curva roxa no canto inferior direito */
+.brand-arches-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 75%;
+  aspect-ratio: 1;
+  bottom: -28%;
+  right: -25%;
+  background: var(--brand-purple);
+  border-radius: 50%;
+}
+.brand-arches-panel > * { position: relative; z-index: 1; }
+
+
+/* Animacoes da tela de carregamento */
+@keyframes loading-bg {
+  0%   { transform: scale(1.05) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.15) translate3d(-1.5%, -1%, 0); }
+  100% { transform: scale(1.05) translate3d(0, 0, 0); }
+}
+@keyframes loading-shine {
+  0%   { transform: translateX(0) rotate(12deg); }
+  100% { transform: translateX(450%) rotate(12deg); }
+}
+@keyframes loading-bar {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-loading-bg    { animation: loading-bg 12s ease-in-out infinite; }
+.animate-loading-shine { animation: loading-shine 2.8s ease-in-out infinite; }
+.animate-loading-bar   { animation: loading-bar 1.6s ease-in-out infinite; }
+.animate-fade-in       { animation: fade-in 0.5s ease-out both; }
+
+/* Fundo de carregamento com monograma 26 em alta visibilidade e movimento */
+.loading-shell-bg { position: relative; background-color: var(--color-background); overflow: hidden; }
+.loading-shell-bg::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  opacity: 0.85;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23e63946' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%236938d4' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23c4e93a' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%232eb7d6' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='274' height='424' viewBox='0 0 274 424'><path fill='%23f08a1c' d='M274 205.34H0V136.894C0 99.0916 30.6444 68.4465 68.4463 68.4463H0C0.000169075 30.6445 30.6445 0.000176606 68.4463 0H205.554C243.355 0.000183226 274 30.6445 274 68.4463C274 106.248 243.356 136.893 205.554 136.894H274V205.34Z'/><path fill='%23c4e93a' d='M274 354.679C274 392.48 243.355 423.125 205.554 423.125H68.4463C30.6445 423.125 0.000197941 392.48 0 354.679V286.231C0.000169075 248.43 30.6445 217.785 68.4463 217.785H205.554C243.355 217.785 274 248.43 274 286.231H205.554C243.356 286.232 274 316.877 274 354.679Z'/></svg>");
+  background-size: 220px 340px, 220px 340px, 220px 340px;
+  background-position: 0 0, 110px 170px, 220px 80px;
+  background-repeat: repeat, repeat, repeat;
+  animation: loading-tile-drift 22s linear infinite;
+  z-index: 0;
+}
+.loading-shell-bg > * { position: relative; z-index: 1; }
+@keyframes loading-tile-drift {
+  from { background-position: 0 0, 110px 170px, 220px 80px; }
+  to   { background-position: 220px 340px, 330px 510px, 440px 420px; }
+}
